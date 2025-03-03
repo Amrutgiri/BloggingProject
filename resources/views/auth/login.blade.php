@@ -57,19 +57,41 @@
                                 {{ session('success') }}
                             </div>
                         @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <form action="{{ route('login.post') }}" method="POST">
                             @csrf
                             <div class="input-group custom">
-                                <input type="Email" class="form-control form-control-lg" placeholder="Email" />
+                                <input type="Email" name="email" class="form-control form-control-lg"
+                                    placeholder="Email" />
                                 <div class="input-group-append custom">
                                     <span class="input-group-text"><i class="icon-copy dw dw-user1"></i></span>
                                 </div>
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="input-group custom">
-                                <input type="password" class="form-control form-control-lg" placeholder="**********" />
+                                <input type="password" name="password" class="form-control form-control-lg"
+                                    placeholder="**********" />
                                 <div class="input-group-append custom">
                                     <span class="input-group-text"><i class="dw dw-padlock1"></i></span>
                                 </div>
+                                @error('password')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="row pb-30">
                                 <div class="col-6">

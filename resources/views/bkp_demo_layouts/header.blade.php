@@ -133,13 +133,15 @@
                     <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
                     <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
                     <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-                    <a class="dropdown-item" href="login.html"><i class="dw dw-logout"></i> Log Out</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form-header').submit();"><i
+                            class="dw dw-logout"></i> Log Out</a>
+                    <form id="logout-form-header" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="github-link">
-            <a href="https://github.com/dropways/deskapp" target="_blank"><img src="vendors/images/github.svg"
-                    alt="" /></a>
-        </div>
+
     </div>
 </div>

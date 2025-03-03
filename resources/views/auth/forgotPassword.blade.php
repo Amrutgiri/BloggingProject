@@ -54,7 +54,8 @@
                         <h6 class="mb-20">
                             Enter your email address to reset your password
                         </h6>
-                        <form>
+                        <form action="{{ route('forgot.password.post') }}" method="POST">
+                            @csrf
                             <div class="input-group custom">
                                 <input type="text" class="form-control form-control-lg" placeholder="Email" />
                                 <div class="input-group-append custom">

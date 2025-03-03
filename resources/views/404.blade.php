@@ -35,7 +35,7 @@
                     check the URL
                 </p>
                 <div class="pt-20 mx-auto max-width-200">
-                    <a href="{{ route('login') }}" class="btn btn-primary btn-block btn-lg">Back To Home</a>
+                    <a href="/" class="btn btn-primary btn-block btn-lg">Back To Home</a>
                 </div>
             </div>
         </div>

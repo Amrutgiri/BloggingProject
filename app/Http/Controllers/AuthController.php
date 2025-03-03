@@ -47,15 +47,18 @@ class AuthController extends Controller
 
     public function loginPost(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+
         try {
+            $request->validate([
+                'email' => 'required|email',
+                'password' => 'required',
+            ]);
+
             $userCread = $request->only('email', 'password');
+
             if (Auth::attempt($userCread)) {
                 if (Auth::user()->role == 0) {
-                    return redirect()->route('home');
+                    return redirect()->route('user.home');
                 } else if (Auth::user()->role == 1) {
                     return redirect()->route('admin.home');
                 } else {
@@ -96,7 +99,7 @@ class AuthController extends Controller
             $data['email'] = $request->email;
             $data['title'] = 'Password Reset';
             $data['body'] = 'Please click on the link below to reset your password';
-            // Mail::to($request->email)->send(new SendMail($data));
+            //Mail::to($request->email)->send(new SendMail($data));
             $passwordReset = new PasswordReset();
             $passwordReset->email = $request->email;
             $passwordReset->token = $token;
